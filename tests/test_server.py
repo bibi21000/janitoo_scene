@@ -61,7 +61,7 @@ class TestEventsSerser(JNTTServer, JNTTServerCommon):
     broker_user = 'toto'
     broker_password = 'toto'
     server_class = JNTServer
-    server_conf = "tests/functional/scenarios/data/janitoo_scenarios.conf"
+    server_conf = "tests/data/janitoo_scenarios.conf"
 
     def test_110_request_system_values(self):
         self.start()

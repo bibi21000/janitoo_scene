@@ -100,7 +100,7 @@ setup(
     include_package_data=True,
     data_files = data_files,
     install_requires=[
-                     'janitoo == %s'%janitoo_version,
+                     'janitoo_admin >= %s'%"0.0.6",
                     ],
     entry_points = janitoo_entry_points,
 )
