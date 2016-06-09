@@ -1,6 +1,0 @@
-[janitoo.threads]
-scenarios = janitoo_scenarios.thread:make_thread
-
-[janitoo.components]
-scenarios.simple = janitoo_scenarios.component:make_component
-

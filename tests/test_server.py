@@ -21,7 +21,10 @@ __license__ = """
 """
 __author__ = 'Sébastien GALLET aka bibi21000'
 __email__ = 'bibi21000@gmail.com'
-__copyright__ = "Copyright © 2013-2014-2015 Sébastien GALLET aka bibi21000"
+__copyright__ = "Copyright © 2013-2014-2015-2016 Sébastien GALLET aka bibi21000"
+
+import warnings
+warnings.filterwarnings("ignore")
 
 import sys, os
 import time, datetime
@@ -42,17 +45,6 @@ from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_S
 
 from janitoo.server import JNTServer
 
-
-##############################################################
-#Check that we are in sync with the official command classes
-#Must be implemented for non-regression
-from janitoo.classes import COMMAND_DESC
-
-COMMAND_DISCOVERY = 0x5000
-
-assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
-##############################################################
-
 class TestEventsSerser(JNTTServer, JNTTServerCommon):
     """Test the Events server
     """
@@ -62,13 +54,7 @@ class TestEventsSerser(JNTTServer, JNTTServerCommon):
     broker_password = 'toto'
     server_class = JNTServer
     server_conf = "tests/data/janitoo_scenarios.conf"
-
-    def test_110_request_system_values(self):
-        self.start()
-        nodeHADD=HADD%(35,0)
-        self.assertHeartbeatNode(hadd=nodeHADD)
-        self.assertNodeRequest(cmd_class=COMMAND_DISCOVERY, uuid='request_info_nodes', node_hadd=nodeHADD, client_hadd=HADD%(9999,0))
-        self.stop()
+    hadds = [HADD%(35,0)]
 
 class TestEventsThread(JNTTThread, JNTTThreadCommon):
     """Test the Events thread
